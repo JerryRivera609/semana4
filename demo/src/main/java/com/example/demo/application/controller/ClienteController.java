@@ -24,7 +24,19 @@ public class ClienteController {
     @PostMapping()
     public ResponseEntity guardarCliente(@RequestBody Cliente cliente){
         clienteService.guardarCliente(cliente);
-        return ResponseEntity.ok(Map.of("Respuesta correcta","C"));
+        return ResponseEntity.ok(Map.of("Cliente guardado correctamente","C"));
+    }
+
+    @PutMapping
+    public ResponseEntity actualizarCliente(@RequestBody Cliente cliente){
+        clienteService.editarCliente(cliente);
+        return ResponseEntity.ok(Map.of("Cliente actualizado correctamente","C"));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity eliminarCliente(@PathVariable Long id){
+        clienteService.eliminarCliente(id);
+        return ResponseEntity.ok(Map.of("Cliente eliminado correctamente","C"));
     }
 
 }
